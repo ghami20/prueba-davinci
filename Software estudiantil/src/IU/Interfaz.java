@@ -12,8 +12,18 @@ public class Interfaz {
 		static Listado legajo = new Listado();
 		
 		public void Login() {
+			
+			SobreCarga();
 			System.out.println("Bienvenido");
 			imprimirMenu();
+		}
+		
+		private void SobreCarga() {
+			Alumno alumno = new Alumno();
+			alumno.setApellido("Rodriguez");
+			alumno.setNombre("Mariano");
+			alumno.setDni("12345679");
+			legajo.add(alumno);
 		}
 		
 		private void imprimirMenu() {
@@ -70,7 +80,19 @@ public class Interfaz {
 			}
 		}
 		private void Editar(Alumno alumno) {
+			System.out.println("Ingrese el nombre de alumno");		
+			System.out.println("Debe ser un nombre de minimo 3 letras y maximo 60");
+			alumno.setNombre(entrada.next());
+			System.out.println("Ingrese apellido");
+			System.out.println("Debe ser un apellido de minimo 3 letras y maximo 60");
+			alumno.setApellido(entrada.next());
+			if(legajo.Editar(alumno)) {
+				System.out.println("el alumno se pudo editar correctamente");
+			}else {
+				System.out.println("no se pudo editar el alumno");
+			}
 			
+			 imprimirMenu();
 		}
 		
 		private void Ingresar() {
